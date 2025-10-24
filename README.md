@@ -116,6 +116,62 @@ npm run dev
 
 Frontend will be available at `http://localhost:3000`
 
+## ✅ System Validation
+
+### Automated Validation Script
+
+Run the automated validation script to check system readiness:
+
+```bash
+./validate-system.sh
+```
+
+This script validates:
+- ✅ Prerequisites installation (.NET, Node.js, npm)
+- ✅ Backend build status
+- ✅ Frontend configuration
+- ✅ Documentation completeness
+- ⚠️ Security features status
+- ⚠️ Database configuration
+- ✅ Project structure
+
+### Health Check Endpoints
+
+The backend API includes health check endpoints for monitoring:
+
+```bash
+# Basic health check
+curl http://localhost:5000/api/v1/health
+
+# Detailed readiness check
+curl http://localhost:5000/api/v1/health/ready
+
+# Liveness check
+curl http://localhost:5000/api/v1/health/live
+
+# System information
+curl http://localhost:5000/api/v1/health/info
+```
+
+### System Readiness Status
+
+**Development Environment**: ✅ **READY**
+- System can be built and run locally
+- Core features can be developed and tested
+
+**Testing Environment**: ✅ **READY** (after dependencies install)
+- Suitable for functional testing
+- Integration testing possible
+- User acceptance testing feasible
+
+**Production Environment**: ❌ **NOT READY**
+- Critical security features must be implemented
+- See [System Readiness Report](docs/SYSTEM_READINESS_REPORT.md) for details
+
+For complete validation results and production readiness checklist, see:
+- [System Readiness Report](docs/SYSTEM_READINESS_REPORT.md)
+- [Security Checklist](docs/security-checklist.md)
+
 ## 📁 Project Structure
 
 ```
@@ -285,6 +341,10 @@ Environment variables in `.env.local`:
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🐛 Known Issues
+
+For a complete assessment of system readiness and known issues, see the [System Readiness Report](docs/SYSTEM_READINESS_REPORT.md).
+
+### Critical Issues for Production
 
 1. MFA implementation is structural only - TOTP/SMS/WebAuthn not fully implemented
 2. Password hashing uses placeholder - must implement Argon2/bcrypt
