@@ -1,5 +1,6 @@
 'use client';
 
+import Link from 'next/link';
 import { useUserPoints } from '@/hooks/useUserPoints';
 
 export default function Conquistas() {
@@ -139,12 +140,12 @@ export default function Conquistas() {
 
         {/* Back Button */}
         <div className="mt-8 text-center">
-          <a
+          <Link
             href="/"
             className="inline-flex items-center px-6 py-3 bg-secondary text-secondary-foreground rounded-lg hover:bg-secondary/80 transition-colors"
           >
             ← Voltar ao Início
-          </a>
+          </Link>
         </div>
       </div>
     </main>

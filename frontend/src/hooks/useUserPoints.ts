@@ -39,7 +39,8 @@ export function useUserPoints() {
         // Simulate API delay
         await new Promise(resolve => setTimeout(resolve, 500));
         
-        // Mock data
+        // Mock data with fixed timestamps for consistency
+        const fixedDate = '2025-10-24T10:00:00.000Z';
         const mockAchievements: Achievement[] = [
           {
             id: '1',
@@ -48,7 +49,7 @@ export function useUserPoints() {
             points: 10,
             icon: '🎯',
             unlocked: true,
-            unlockedAt: new Date().toISOString(),
+            unlockedAt: fixedDate,
           },
           {
             id: '2',
@@ -57,7 +58,7 @@ export function useUserPoints() {
             points: 25,
             icon: '👤',
             unlocked: true,
-            unlockedAt: new Date().toISOString(),
+            unlockedAt: fixedDate,
           },
           {
             id: '3',

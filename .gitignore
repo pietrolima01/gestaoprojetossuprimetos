@@ -217,6 +217,7 @@ yarn-error.log*
 .pnpm-debug.log*
 .env*.local
 .vercel
+*.tsbuildinfo
 
 # Testing
 coverage/
