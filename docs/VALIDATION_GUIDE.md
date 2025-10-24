@@ -76,7 +76,7 @@ curl http://localhost:5000/api/v1/health
 ```json
 {
   "status": "healthy",
-  "timestamp": "2025-10-24T18:00:00Z",
+  "timestamp": "{current-timestamp}",
   "service": "Gestao de Acessos API",
   "version": "1.0.0"
 }
@@ -92,7 +92,7 @@ curl http://localhost:5000/api/v1/health/ready
 ```json
 {
   "status": "ready_with_warnings",
-  "timestamp": "2025-10-24T18:00:00Z",
+  "timestamp": "{current-timestamp}",
   "service": "Gestao de Acessos API",
   "version": "1.0.0",
   "environment": "Development",
@@ -131,7 +131,7 @@ curl http://localhost:5000/api/v1/health/live
 ```json
 {
   "status": "alive",
-  "timestamp": "2025-10-24T18:00:00Z"
+  "timestamp": "{current-timestamp}"
 }
 ```
 
@@ -148,7 +148,7 @@ curl http://localhost:5000/api/v1/health/info
   "version": "1.0.0",
   "description": "Access Management System",
   "environment": "Development",
-  "timestamp": "2025-10-24T18:00:00Z",
+  "timestamp": "{current-timestamp}",
   "capabilities": {
     "userManagement": true,
     "roleBasedAccessControl": true,
@@ -385,9 +385,19 @@ curl http://localhost:5000/api/v1/health
 
 Ensure `Program.cs` has controllers configured:
 ```csharp
+var builder = WebApplication.CreateBuilder(args);
+
+// Add services to the container
 builder.Services.AddControllers();
-// ...
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen();
+
+var app = builder.Build();
+
+// Configure middleware and map controllers
 app.MapControllers();
+
+app.Run();
 ```
 
 Then rebuild and restart:
